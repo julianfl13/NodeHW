@@ -1,10 +1,26 @@
+const axios = require("axios");
+const genMd = require('./generateMarkdown')
 const api = {
-  async getUser(username) {
-    const res = await fetch({url: `https://api.github.com/users/${username}`, method: 'GET' });
-    const user = res.json();
-    console.log(user);
+getUser(username, data) {
 
+    axios(`https://api.github.com/users/${username}`)
+      .then(res => {
+      
+      
+      genMd.generateMarkdown(res, data);
+      
+    });
   }
+
 };
 
+
 module.exports = api;
+
+
+
+//async await 
+//projects that modularize 
+//api call in a separate file
+//how to pass the file 
+//how to export the api file
